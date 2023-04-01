@@ -2,24 +2,27 @@
 
 ## My Pseudocode
 
-~~* Set up base html, css, js. Link together~~
-~~* Link html to openweathermap API, other API as needed (JQuery, Bootstrap, etc.)~~
+~~* Set up base html, css, js. Link together~~  
+~~* Link html to openweathermap API, other API as needed (JQuery, Bootstrap, etc.)~~  
 * Make sections that will be filled later:  
     ~~* CONTENT: Main section to display weather in currently selected city~~  
     ~~* SEARCH: Aside to allow for searchbar~~  
-    * HISTORY: Aside to list saved searches for quick access to multiple cities
-~~* Add search bar first, learn how to use that from openweathermap~~
-~~* Use localStorage to ensure that searches are saved in history and displayed from storage~~
-* Selecting a city must display that city's current: 
-    * Name
-    * Date
-    * Icon for weather conditions
-    * Temperature
-    * Humidity
-    * Wind Speed
-* Viewing the future of that city will show:
-    * 5-day forecast of same parameters as above.
-* Clicking on a city from search history will load the parameters for that city.
+    * HISTORY: Aside to list saved searches for quick access to multiple cities  
+~~* Add search bar first, learn how to use that from openweathermap~~  
+~~* Use localStorage to ensure that searches are saved in history and displayed from storage~~  
+~~* Selecting a city must display that city's current:~~   
+    ~~* Name~~  
+    ~~* Date~~  
+    ~~* Icon for weather conditions~~  
+    ~~* Temperature~~  
+    ~~* Humidity~~  
+    ~~* Wind Speed~~  
+* Viewing the future of that city will show:  
+    * 5-day forecast of same parameters as above.  
+* Clicking on a city from search history will load the parameters for that city. 
+
+NEW ISSUES ARISEN:  
+* Date displayed is for current location, what if they search a city across the globe?
 
 ---
 

@@ -4,7 +4,7 @@ var countryCode = document.getElementById('inputGroupSelect01');
 var searchEl = document.getElementById('searchBtn');
 var todaysForecastEl = document.getElementById('todaysWeather');
 var fiveDayEl = document.getElementById('fiveDayForecast');
-var test;
+var weatherImg = document.getElementById('weatherIcon');
 
 // TESTING
 var h1El = document.getElementById('test');
@@ -35,18 +35,29 @@ function searchLocation() {
         var currentLon = currentLatLon.lonReturned;  
         
         // To call the weather API using the lat and lon previously pulled
-        fetch(('https://api.openweathermap.org/data/2.5/forecast?lat=' + currentLat + '&lon=' + currentLon + '&appid=' + weatherKey), {
+        fetch(('https://api.openweathermap.org/data/2.5/forecast?lat=' + currentLat + '&lon=' + currentLon + '&appid=' + weatherKey + '&units=imperial'), {
         })
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-        });
-
-        fiveDayEl.textContent = (data);
+            currentCity.textContent = (data.city.name);
+            for (i = 0; i < 3; i++) {
+                const todaysDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+                currentDate.textContent = todaysDate; 
+                var iconCode = data.list[i].weather[i].icon;
+                console.log(iconCode);
+                var iconUrl = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
+                console.log(iconUrl);
+                weatherImg.setAttribute('src', iconUrl);
+                currentTemp.textContent = "Temperature: " + (data.list[i].main.temp) + '\u00B0' +'F';
+                currentHumidity.textContent = "Humidity: " + (data.list[i].main.humidity) + '%';
+                currentWind.textContent = "Wind Speed: " + (data.list[i].wind.speed) + 'MPH';
+            }
+            
+        });  
     });
-
 }
 
 searchEl.addEventListener('click', searchLocation);
