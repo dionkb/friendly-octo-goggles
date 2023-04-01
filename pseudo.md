@@ -2,9 +2,8 @@
 
 ## My Pseudocode
 
-* Set up base html, css, js. Link together
-* Link html to openweathermap API, dayJS to display time?, other API as needed (JQuery, Bootstrap, etc.)
-* OPTIONAL: Make a header with current day and time?
+~~* Set up base html, css, js. Link together~~
+~~* Link html to openweathermap API, other API as needed (JQuery, Bootstrap, etc.)~~
 * Make sections that will be filled later:  
     * CONTENT: Main section to display weather in currently selected city
     * SEARCH: Aside to allow for searchbar
