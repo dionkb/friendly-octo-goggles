@@ -1,43 +1,52 @@
-var todaysDate = dayjs();
 var weatherKey = 'cd7ebc0fc09d55d92a5a8ac5ed133e74';
-var cityName = 'Gainesville';
-var zipCode = '32605';
-var countryCode = 'US';
-// var latitude = returnedLat;
-// var longitude = returnedLon;
+var zipCode = document.getElementById('zipInput');
+var countryCode = document.getElementById('inputGroupSelect01');
+var searchEl = document.getElementById('searchBtn');
+var todaysForecastEl = document.getElementById('todaysWeather');
+var fiveDayEl = document.getElementById('fiveDayForecast');
+var test;
 
 // TESTING
-// var h1El = document.getElementById("test");
-// h1El.textContent = (todaysDate);
-$('#test').text(todaysDate.format('MMM DD, YYYY'));
+var h1El = document.getElementById('test');
+h1El.textContent = ('BIG BOY');
 
+// Allows user to search for a specific city
+function searchLocation() {
 
+    // USED FOR TESTING PURPOSES ONLY
+    console.log(zipCode.value);
+    console.log(countryCode.value);
 
-// To obtain lat and long
-fetch(('http://api.openweathermap.org/geo/1.0/zip?zip=' + zipCode + ',' + countryCode + '&appid=' + weatherKey), {
-})
-.then(function (response) {
-    return response.json();
-})
-.then(function (data) {
-    console.log(data);
-    var latAndLon = {
-        latReturned: data.lat,
-        lonReturned: data.lon,
-    }
-    localStorage.setItem("geoCoords", JSON.stringify(latAndLon));
-});
+    // To obtain lat and lon from zip and country user input
+    fetch(('https://api.openweathermap.org/geo/1.0/zip?zip=' + zipCode.value + ',' + countryCode.value + '&appid=' + weatherKey), {
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        var latAndLon = {
+            latReturned: data.lat,
+            lonReturned: data.lon,
+        }
+        localStorage.setItem('latAndLon', JSON.stringify(latAndLon));
+        var currentLatLon = JSON.parse(localStorage.getItem('latAndLon'));
+        var currentLat = currentLatLon.latReturned;
+        var currentLon = currentLatLon.lonReturned;  
+        
+        // To call the weather API using the lat and lon previously pulled
+        fetch(('https://api.openweathermap.org/data/2.5/forecast?lat=' + currentLat + '&lon=' + currentLon + '&appid=' + weatherKey), {
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
 
+        fiveDayEl.textContent = (data);
+    });
 
-// To call the weather app after the lat and long have been found
-// fetch('https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=weatherKey', {
-// //   method: 'GET', //GET is the default.
-// //   credentials: 'same-origin', // include, *same-origin, omit
-// //   redirect: 'follow', // manual, *follow, error
-// })
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     });
+}
+
+searchEl.addEventListener('click', searchLocation);
