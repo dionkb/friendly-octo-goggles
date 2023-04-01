@@ -1,3 +1,19 @@
-h1 {
-    font-size: 144px;
+* {
+    margin: 0px;
+    padding: 0px;
+    background-color: darkgray;
+}
+
+.container {
+    height: 1000px;
+    margin: 0px;
+    padding: 20px;
+}
+
+.searchBar {
+    background-color: violet;
+}
+
+.weatherDisplay * {
+    background-color: bisque;
 }
