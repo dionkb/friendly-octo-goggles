@@ -1,9 +1,14 @@
+// Variables used to convert zip/country input to lat/lon
 var weatherKey = 'cd7ebc0fc09d55d92a5a8ac5ed133e74';
 var zipCode = document.getElementById('zipInput');
 var countryCode = document.getElementById('countries');
 var searchEl = document.getElementById('searchBtn');
+
+// Variables used to convert lat/lon to local city weather info
 var todaysForecastEl = document.getElementById('todaysWeather');
 var fiveDayEl = document.getElementById('fiveDayForecast');
+
+// Variables used to display parameters of local weather based on city search
 var selectedCity = document.getElementById('currentCity');
 var selectedDate = document.querySelectorAll('#currentDate');
 var dateArray = [...selectedDate];
@@ -19,8 +24,32 @@ var selectedHumidity = document.querySelectorAll('#currentHumidity');
 var humidArray = [...selectedHumidity];
 var selectedWind = document.querySelectorAll('#currentWind');
 var windArray = [...selectedWind];
+
+// Variables used for localStorage setting/getting
 var searchHistory = document.getElementById('historyContainer');
-var searchedCities = [];
+var searchedCities = JSON.parse(localStorage.getItem('savedCities'));
+
+
+// ------------------------------------------- END OF VARIABLES ----------------------------------------------------------- 
+
+
+// -------------------------------------------- START OF CODE -------------------------------------------------------------
+
+
+// Loads previously stored items to display upon re-entering page if needed. Limits to 5 cities
+function loadCities() {
+    for (i = 0; i < 5; i++) {
+        console.log(searchedCities);
+        console.log(searchedCities[i]);
+        var citiesList = document.createElement('ul');
+        var previousCity = document.createElement('li');
+        citiesList.textContent = "";
+        previousCity.textContent = searchedCities[i];
+        searchHistory.append(citiesList);
+        searchHistory.append(previousCity);
+    }
+}
+loadCities();
 
 // Allows user to search for a specific city
 function displayLocation() {
@@ -69,19 +98,9 @@ function displayLocation() {
             var searchedCity = data.city.name;
             searchedCities.push(searchedCity);
             localStorage.setItem('savedCities', JSON.stringify(searchedCities));
-
         });
     });
 }; 
 
-
+// Sets up eventListener for clickable elements
 searchEl.addEventListener('click', displayLocation);
-
-
-// // Allows a search history of cities to be generated below the search button
-// var citiesList = document.createElement('ul');
-// var previousCity = document.createElement('li');
-// citiesList.textContent = "";
-// previousCity.textContent = data.city.name;
-// searchHistory.append(citiesList);
-// searchHistory.append(previousCity);
