@@ -38,7 +38,7 @@ $(function () {
 // Displays the last searched city pulled from local storage so the screen populates upon entry
 function displayLast() {
     var recentlySearched = JSON.parse(localStorage.getItem('savedCities'));
-    var lastSearched = recentlySearched.slice(-1)[0]; 
+    var lastSearched = recentlySearched[recentlySearched.length - 1]; 
     displayLocation(lastSearched);
 }
 displayLast();
