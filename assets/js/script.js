@@ -1,6 +1,6 @@
 var weatherKey = 'cd7ebc0fc09d55d92a5a8ac5ed133e74';
 var zipCode = document.getElementById('zipInput');
-var countryCode = document.getElementById('inputGroupSelect01');
+var countryCode = document.getElementById('countries');
 var searchEl = document.getElementById('searchBtn');
 var todaysForecastEl = document.getElementById('todaysWeather');
 var fiveDayEl = document.getElementById('fiveDayForecast');
@@ -19,7 +19,8 @@ var selectedHumidity = document.querySelectorAll('#currentHumidity');
 var humidArray = [...selectedHumidity];
 var selectedWind = document.querySelectorAll('#currentWind');
 var windArray = [...selectedWind];
-
+var searchHistory = document.getElementById('historyContainer');
+var searchedCities = [];
 
 // Allows user to search for a specific city
 function displayLocation() {
@@ -63,9 +64,24 @@ function displayLocation() {
                 humidArray[i].textContent = "Humidity: " + data.list[i*7].main.humidity + '%';
                 windArray[i].textContent = "Wind Speed: " + data.list[i*7].wind.speed + 'MPH';
             };
+
+            // Stores the search history in local storage
+            var searchedCity = data.city.name;
+            searchedCities.push(searchedCity);
+            localStorage.setItem('savedCities', JSON.stringify(searchedCities));
+
         });
     });
-};  
+}; 
 
 
 searchEl.addEventListener('click', displayLocation);
+
+
+// // Allows a search history of cities to be generated below the search button
+// var citiesList = document.createElement('ul');
+// var previousCity = document.createElement('li');
+// citiesList.textContent = "";
+// previousCity.textContent = data.city.name;
+// searchHistory.append(citiesList);
+// searchHistory.append(previousCity);
