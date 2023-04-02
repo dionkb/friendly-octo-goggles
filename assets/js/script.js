@@ -106,6 +106,6 @@ searchEl.addEventListener('click', function() {
         displayLocation(cityName.value);
     }
     else {
-        alert("Please enter a city");
+        alert("Please enter a city name");
     }
 });
