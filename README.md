@@ -8,7 +8,7 @@ This project was created to demonstrate the use of server-side API's.
 This webpage will allows a user to enter a city into a search bar, which will pull the necessary data via a fetch request, to display the weather forecast there. It displays a current weather info area, as well as a five day forecast.
 
 Screenshot of final output:   
-![image](https://user-images.githubusercontent.com/64495259/229381006-dc545ac6-2b11-43e8-ac89-6d1509ade9fc.png)
+![image](https://user-images.githubusercontent.com/64495259/229381073-d58c7655-46f4-4481-8895-0d67ba4877b6.png)
 
 Link to the GitHub repository:  
 https://github.com/dionkb/friendly-octo-goggles
