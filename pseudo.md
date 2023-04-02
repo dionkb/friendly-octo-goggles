@@ -24,7 +24,8 @@
 NEW ISSUES ARISEN:  
 ~~* Leaving city input blank does not display error, can be confusing for user.~~  
 * Date displayed is for current location, what if they search a city across the globe?  
-NO LONGER AN ISSUE AFTER OVERHAUL: Need to add a bank of countries and country codes  
+~~* NO LONGER AN ISSUE AFTER OVERHAUL: Need to add a bank of countries and country codes~~  
+~~* Need to display last searched city upon entering page~~  
 * Searching new city overwrites localStorage of old cities  
 * Can't get newly searched city to add to search history immediately
 
