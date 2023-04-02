@@ -9,10 +9,10 @@
     <title>Server Side APIs - Final Project</title>
 </head>
 <body>
-    <nav id="test">TEST</nav>
+    <nav id="test">Weather</nav>
 
     <div class="container">
-        <div class="row">
+        <div class="row searchAndToday">
             <div class="col-5 searchBar">
                 <div class="input-group mb-5">
                     <div class="input-group-prepend">
@@ -33,20 +33,54 @@
                 </div>
                 <button type="button" class="btn btn-outline-dark" id="searchBtn">SEARCH</button>
             </div>
-            <div class="col-7 weatherDisplay">
-                <div class="col-12" id="todaysWeather">
+            <div class="col-7 weatherDisplay text-center">
+                <div>
                     <h2 id="currentCity"></h2>
+                </div>
+                <div class="col-12" id="todaysWeather">
                     <p id="currentDate"></p>
                     <div id="iconDisplay"><img id="weatherIcon" src=""></div>
                     <p id="currentTemp"></p>
                     <p id="currentHumidity"></p>
                     <p id="currentWind"></p>
                 </div>
-                <div class="col-12" id="fiveDayForecast">
-                    <p>
-
-                    </p>
-                </div>
+            </div>
+        </div>
+        <div class="row fiveDayContainer">
+            <div class="col-2">
+                    <p id="currentDate"></p>
+                    <div id="iconDisplay"><img id="weatherIcon" src=""></div>
+                    <p id="currentTemp"></p>
+                    <p id="currentHumidity"></p>
+                    <p id="currentWind"></p>
+            </div>
+            <div class="col-2" id="2DaysAhead">
+                    <p id="currentDate"></p>
+                    <div id="iconDisplay"><img id="weatherIcon" src=""></div>
+                    <p id="currentTemp"></p>
+                    <p id="currentHumidity"></p>
+                    <p id="currentWind"></p>
+            </div>
+            <div class="col-2" id="3DaysAhead">
+                    <p id="currentDate"></p>
+                    <div id="iconDisplay"><img id="weatherIcon" src=""></div>
+                    <p id="currentTemp"></p>
+                    <p id="currentHumidity"></p>
+                    <p id="currentWind"></p>
+            </div>
+            <div class="col-2" id="4DaysAhead">
+                    <p id="currentDate"></p>
+                    <div id="iconDisplay"><img id="weatherIcon" src=""></div>
+                    <p id="currentTemp"></p>
+                    <p id="currentHumidity"></p>
+                    <p id="currentWind"></p>
+            </div>
+            <div class="col-2" id="5DaysAhead">
+                    <p id="currentDate"></p>
+                    <div id="iconDisplay"><img id="weatherIcon" src=""></div>
+                    <p id="currentTemp"></p>
+                    <p id="currentHumidity"></p>
+                    <p id="currentWind"></p>
             </div>
         </div>
     </div>

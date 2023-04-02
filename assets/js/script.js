@@ -4,18 +4,25 @@ var countryCode = document.getElementById('inputGroupSelect01');
 var searchEl = document.getElementById('searchBtn');
 var todaysForecastEl = document.getElementById('todaysWeather');
 var fiveDayEl = document.getElementById('fiveDayForecast');
-var weatherImg = document.getElementById('weatherIcon');
+var selectedCity = document.getElementById('currentCity');
+var selectedDate = document.querySelectorAll('#currentDate');
+var dateArray = [...selectedDate];
+var dateFull = new Date();
+var currentDay = dateFull.getDate();
+var currentMonth = dateFull.getMonth() + 1;
+var currentYear = dateFull.getFullYear();
+var selectedIcon = document.querySelectorAll('#weatherIcon');
+var iconArray = [...selectedIcon];
+var selectedTemp = document.querySelectorAll('#currentTemp');
+var tempArray = [...selectedTemp];
+var selectedHumidity = document.querySelectorAll('#currentHumidity');
+var humidArray = [...selectedHumidity];
+var selectedWind = document.querySelectorAll('#currentWind');
+var windArray = [...selectedWind];
 
-// TESTING
-var h1El = document.getElementById('test');
-h1El.textContent = ('BIG BOY');
 
 // Allows user to search for a specific city
-function searchLocation() {
-
-    // USED FOR TESTING PURPOSES ONLY
-    console.log(zipCode.value);
-    console.log(countryCode.value);
+function displayLocation() {
 
     // To obtain lat and lon from zip and country user input
     fetch(('https://api.openweathermap.org/geo/1.0/zip?zip=' + zipCode.value + ',' + countryCode.value + '&appid=' + weatherKey), {
@@ -42,22 +49,23 @@ function searchLocation() {
         })
         .then(function (data) {
             console.log(data);
-            currentCity.textContent = (data.city.name);
-            for (i = 0; i < 3; i++) {
-                const todaysDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
-                currentDate.textContent = todaysDate; 
-                var iconCode = data.list[i].weather[i].icon;
-                console.log(iconCode);
-                var iconUrl = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
-                console.log(iconUrl);
-                weatherImg.setAttribute('src', iconUrl);
-                currentTemp.textContent = "Temperature: " + (data.list[i].main.temp) + '\u00B0' +'F';
-                currentHumidity.textContent = "Humidity: " + (data.list[i].main.humidity) + '%';
-                currentWind.textContent = "Wind Speed: " + (data.list[i].wind.speed) + 'MPH';
-            }
-            
-        });  
-    });
-}
 
-searchEl.addEventListener('click', searchLocation);
+            // Dynamically generates city name upon user input/search
+            selectedCity.textContent = (data.city.name);
+
+            // Dynamically generates elements for the "todaysWeather" and "fiveDayForecast" section
+            for (var i = 0; i < 6; i++) {
+                dateArray[i].textContent = currentMonth + '-' + (currentDay + i) + '-' + currentYear;
+                var iconCode = data.list[i*7].weather[0].icon;
+                var iconUrl = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
+                iconArray[i].setAttribute('src', iconUrl);
+                tempArray[i].textContent = "Temperature: " + data.list[i*7].main.temp + '\u00B0' +'F';
+                humidArray[i].textContent = "Humidity: " + data.list[i*7].main.humidity + '%';
+                windArray[i].textContent = "Wind Speed: " + data.list[i*7].wind.speed + 'MPH';
+            };
+        });
+    });
+};  
+
+
+searchEl.addEventListener('click', displayLocation);

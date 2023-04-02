@@ -4,10 +4,19 @@
     background-color: darkgray;
 }
 
+nav {
+    text-align: center;
+    font-size: 66px;
+}
+
 .container {
-    height: 1000px;
-    margin: 0px;
-    padding: 20px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.searchAndToday {
+    height: 325px;
 }
 
 .searchBar {
@@ -16,4 +25,9 @@
 
 .weatherDisplay * {
     background-color: bisque;
+}
+
+.fiveDayContainer {
+    justify-content: space-evenly;
+    font-size: 14px;
 }
