@@ -17,12 +17,13 @@
     ~~* Temperature~~  
     ~~* Humidity~~  
     ~~* Wind Speed~~  
-* Viewing the future of that city will show:  
-    * 5-day forecast of same parameters as above.  
+~~* Viewing the future of that city will show:~~  
+    ~~* 5-day forecast of same parameters as above.~~  
 * Clicking on a city from search history will load the parameters for that city. 
 
 NEW ISSUES ARISEN:  
-* Date displayed is for current location, what if they search a city across the globe?
+* Date displayed is for current location, what if they search a city across the globe?  
+* Need to add a bank of countries and country codes
 
 ---
 
