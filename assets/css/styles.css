@@ -31,12 +31,8 @@ body {
     height: 350px;
 }
 
-/* .searchBar {
-    
-} */
-
 #historyContainer {
-    text-align: start;
+    text-align: center;
 }
 
 .mb-5 {
@@ -44,7 +40,7 @@ body {
 }
 
 .fiveDayContainer {
-    justify-content: space-evenly;
+    justify-content: space-around;
     font-size: 14px;
 }
 

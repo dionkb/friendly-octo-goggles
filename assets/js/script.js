@@ -69,19 +69,20 @@ function displayLocation(cityChosen) {
     .then(function (data) {
         console.log(data);
 
-        // Dynamically generates city name upon user input/search
-        selectedCity.textContent = data.city.name;
-
-        // Dynamically generates elements for the "todaysWeather" and "fiveDayForecast" section
-        for (var i = 0; i < 6; i++) {
-            dateArray[i].textContent = currentMonth + '-' + (currentDay + i) + '-' + currentYear;
-            var iconCode = data.list[i*7].weather[0].icon;
-            var iconUrl = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
-            iconArray[i].setAttribute('src', iconUrl);
-            tempArray[i].textContent = "Temperature: " + data.list[i*7].main.temp + '\u00B0' +'F';
-            humidArray[i].textContent = "Humidity: " + data.list[i*7].main.humidity + '%';
-            windArray[i].textContent = "Wind Speed: " + data.list[i*7].wind.speed + 'MPH';
+        function displayWeather() {
+            // Dynamically generates elements for the "todaysWeather" and "fiveDayForecast" section
+            selectedCity.textContent = data.city.name;
+            for (var i = 0; i < 6; i++) {
+                dateArray[i].textContent = currentMonth + '-' + (currentDay + i) + '-' + currentYear;
+                var iconCode = data.list[i*7].weather[0].icon;
+                var iconUrl = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
+                iconArray[i].setAttribute('src', iconUrl);
+                tempArray[i].textContent = "Temperature: " + data.list[i*7].main.temp + '\u00B0' +'F';
+                humidArray[i].textContent = "Humidity: " + data.list[i*7].main.humidity + '%';
+                windArray[i].textContent = "Wind Speed: " + data.list[i*7].wind.speed + 'MPH';
+            };
         };
+        displayWeather();
 
         // Stores the search history in local storage
         var searchedCity = data.city.name;
@@ -90,7 +91,13 @@ function displayLocation(cityChosen) {
     });
 };
 
+
 // Sets up eventListener for clickable elements
 searchEl.addEventListener('click', function() {
-    displayLocation(cityName.value); 
+    if (cityName.value) {
+        displayLocation(cityName.value);
+    }
+    else {
+        alert("Please enter a city");
+    }
 });
