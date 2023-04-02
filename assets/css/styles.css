@@ -1,7 +1,13 @@
+:root {
+    --dark: rgb(29, 27, 27);
+    --light: antiquewhite;
+}
+
 * {
     margin: 0px;
     padding: 0px;
-    background-color: darkgray;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 nav {
@@ -9,23 +15,33 @@ nav {
     font-size: 66px;
 }
 
+body {
+    background-color: var(--dark);
+}
+
 .container {
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
     align-items: center;
+    background-color: var(--dark);
+    width: 100%;
 }
 
 .searchAndToday {
-    height: 325px;
+    height: 450px;
 }
 
-.searchBar {
-    background-color: violet;
+/* .searchBar {
+    
+} */
+
+#historyContainer {
+    text-align: start;
 }
 
-.weatherDisplay * {
+/* .weatherDisplay * {
     background-color: bisque;
-}
+} */
 
 .fiveDayContainer {
     justify-content: space-evenly;
