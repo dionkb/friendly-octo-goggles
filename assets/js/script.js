@@ -35,10 +35,19 @@ var searchedCities = [];
 // -------------------------------------------- START OF CODE -------------------------------------------------------------
 
 
+// Displays the last searched city pulled from local storage so the screen populates upon entry
+function displayLast() {
+    var recentlySearched = JSON.parse(localStorage.getItem('savedCities'));
+    var lastSearched = recentlySearched.slice(-1)[0]; 
+    displayLocation(lastSearched);
+}
+displayLast();
+
 // Loads previously stored items to display upon re-entering page if needed. Limits to 5 cities
 function loadCities() {
     for (i = 0; i < 5; i++) {
-        var searchedCities = JSON.parse(localStorage.getItem('savedCities'));
+        var searchedCities = localStorage.getItem('savedCities');
+        searchedCities = JSON.parse(searchedCities) || [];
         var citiesList = document.createElement('ul');
         var previousCity = document.createElement('a');
         previousCity.setAttribute('class', 'historyItem');
@@ -67,10 +76,9 @@ function displayLocation(cityChosen) {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
 
+         // Dynamically generates elements for the "todaysWeather" and "fiveDayForecast" section
         function displayWeather() {
-            // Dynamically generates elements for the "todaysWeather" and "fiveDayForecast" section
             selectedCity.textContent = data.city.name;
             for (var i = 0; i < 6; i++) {
                 dateArray[i].textContent = currentMonth + '-' + (currentDay + i) + '-' + currentYear;
