@@ -34,7 +34,7 @@ var searchedCities = [];
 
 // -------------------------------------------- START OF CODE -------------------------------------------------------------
 
-$(function () {
+
 // Displays the last searched city pulled from local storage so the screen populates upon entry
 function displayLast() {
     var recentlySearched = JSON.parse(localStorage.getItem('savedCities'));
@@ -108,5 +108,4 @@ searchEl.addEventListener('click', function() {
     else {
         alert("Please enter a city");
     }
-});
 });
