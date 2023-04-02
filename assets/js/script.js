@@ -75,7 +75,7 @@ loadCities();
 function displayLocation(cityChosen) {
 
     // To obtain weather from user input
-    fetch(('http://api.openweathermap.org/data/2.5/forecast?q=' + cityChosen + '&appid=' + weatherKey + '&units=imperial'), {
+    fetch(('https://api.openweathermap.org/data/2.5/forecast?q=' + cityChosen + '&appid=' + weatherKey + '&units=imperial'), {
     })
     .then(function (response) {
         return response.json();
@@ -88,7 +88,7 @@ function displayLocation(cityChosen) {
             for (var i = 0; i < 6; i++) {
                 dateArray[i].textContent = currentMonth + '-' + (currentDay + i) + '-' + currentYear;
                 var iconCode = data.list[i*7].weather[0].icon;
-                var iconUrl = 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png';
+                var iconUrl = 'https://openweathermap.org/img/wn/' + iconCode + '@2x.png';
                 iconArray[i].setAttribute('src', iconUrl);
                 tempArray[i].textContent = "Temperature: " + data.list[i*7].main.temp + '\u00B0' +'F';
                 humidArray[i].textContent = "Humidity: " + data.list[i*7].main.humidity + '%';
