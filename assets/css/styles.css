@@ -28,7 +28,7 @@ body {
 }
 
 .searchAndToday {
-    height: 450px;
+    height: 350px;
 }
 
 /* .searchBar {
@@ -39,11 +39,16 @@ body {
     text-align: start;
 }
 
-/* .weatherDisplay * {
-    background-color: bisque;
-} */
+.mb-5 {
+    margin-bottom: 1rem !important;
+}
 
 .fiveDayContainer {
     justify-content: space-evenly;
     font-size: 14px;
+}
+
+a:hover {
+    font-size:larger;
+    cursor: pointer;
 }

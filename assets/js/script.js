@@ -1,6 +1,6 @@
 // Variables used to convert zip/country input to lat/lon
 var weatherKey = 'cd7ebc0fc09d55d92a5a8ac5ed133e74';
-var cityName = document.getElementById('cityInput');
+var cityName = document.getElementById('cityInput')
 var searchEl = document.getElementById('searchBtn');
 
 // Variables used to convert lat/lon to local city weather info
@@ -39,23 +39,29 @@ var searchedCities = [];
 function loadCities() {
     for (i = 0; i < 5; i++) {
         var searchedCities = JSON.parse(localStorage.getItem('savedCities'));
-        console.log(searchedCities);
-        console.log(searchedCities[i]);
         var citiesList = document.createElement('ul');
         var previousCity = document.createElement('a');
+        previousCity.setAttribute('class', 'historyItem');
         citiesList.textContent = "";
-        previousCity.textContent = searchedCities[i];
+        previousCity.textContent = searchedCities[i]
         searchHistory.append(citiesList);
         searchHistory.append(previousCity);
+        var previousCitiesEl = document.querySelectorAll('.historyItem');
     }
+    previousCitiesEl.forEach(function(historyItem) {
+        historyItem.addEventListener('click', function() {
+            var searchable = historyItem.textContent;
+            displayLocation(searchable);
+        });
+    })
 }
 loadCities();
 
 // Allows user to search for a specific city
-function displayLocation() {
+function displayLocation(cityChosen) {
 
-    // To obtain lat and lon from zip and country user input
-    fetch(('http://api.openweathermap.org/data/2.5/forecast?q=' + cityName.value + '&appid=' + weatherKey), {
+    // To obtain weather from user input
+    fetch(('http://api.openweathermap.org/data/2.5/forecast?q=' + cityChosen + '&appid=' + weatherKey + '&units=imperial'), {
     })
     .then(function (response) {
         return response.json();
@@ -79,12 +85,12 @@ function displayLocation() {
 
         // Stores the search history in local storage
         var searchedCity = data.city.name;
-        console.log(searchedCity);
-        console.log(searchedCities);
         searchedCities.push(searchedCity);
         localStorage.setItem('savedCities', JSON.stringify(searchedCities));
     });
 };
 
 // Sets up eventListener for clickable elements
-searchEl.addEventListener('click', displayLocation);
+searchEl.addEventListener('click', function() {
+    displayLocation(cityName.value); 
+});
