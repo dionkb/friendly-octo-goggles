@@ -11,7 +11,7 @@ Screenshot of final output:
 
 
 Link to the GitHub repository:  
-
+https://github.com/dionkb/friendly-octo-goggles
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ Link to the GitHub repository:
 ### Executing program
 
 Link to the deployed application:    
-
+https://dionkb.github.io/friendly-octo-goggles/
 
 ## Authors
 
