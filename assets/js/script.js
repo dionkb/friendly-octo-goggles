@@ -1,9 +1,9 @@
-// Variables used to convert zip/country input to lat/lon
+// Variables used to track city input and API key
 var weatherKey = 'cd7ebc0fc09d55d92a5a8ac5ed133e74';
 var cityName = document.getElementById('cityInput')
 var searchEl = document.getElementById('searchBtn');
 
-// Variables used to convert lat/lon to local city weather info
+// Variables used to display weather conditions based on city input
 var todaysForecastEl = document.getElementById('todaysWeather');
 var fiveDayEl = document.getElementById('fiveDayForecast');
 
@@ -34,7 +34,7 @@ var searchedCities = [];
 
 // -------------------------------------------- START OF CODE -------------------------------------------------------------
 
-
+$(function () {
 // Displays the last searched city pulled from local storage so the screen populates upon entry
 function displayLast() {
     var recentlySearched = JSON.parse(localStorage.getItem('savedCities'));
@@ -108,4 +108,5 @@ searchEl.addEventListener('click', function() {
     else {
         alert("Please enter a city");
     }
+});
 });
